@@ -12,8 +12,8 @@ public class GuessTheNumberApplication {
 
 		SpringApplication.run(GuessTheNumberApplication.class, args);
 
-
 		//System.out.println("guess the number ");
+
 	}
 
 }
