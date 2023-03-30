@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en"   xmlns:th="http://www.thymeleaf.org" >
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+Here are your attempts!
+
+
+<table>
+    <th:block th:each="attempt : ${enteredNumbers}">
+        <td th:text="${attempt}"></td>
+
+    </th:block>
+</table>
+
+
+
+<br>
+<br>
+Try one more time!
+
+<form action="#" th:action="@{/enterTheNumber}" method="post" th:object="${EnterNumber}">
+    <label>Number</label>
+    <input type="text"     th:field="*{userNumber}"   />
+    <br/>
+    <button type="submit">Ok</button>
+</form>
+
+</body>
+</html>

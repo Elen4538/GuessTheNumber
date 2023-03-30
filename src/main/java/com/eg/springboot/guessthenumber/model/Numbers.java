@@ -15,6 +15,7 @@ public class Numbers {
     private int id;
 
     @Column(name = "user_id")
+    //@Column(insertable=false, updatable=false)
     private int userId;
 
     @Column(name = "user_number")
@@ -40,6 +41,10 @@ public class Numbers {
         return userId;
     }
 
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
+
     public int getUserNumber() {
         return userNumber;
     }
@@ -47,4 +52,70 @@ public class Numbers {
     public void setUserNumber(int userNumber) {
         this.userNumber = userNumber;
     }
+
+    @Override
+    public String toString() {
+        return "Numbers{" +
+                "id=" + id +
+                ", userId=" + userId +
+                ", userNumber=" + userNumber +
+                '}';
+    }
 }
+
+
+
+//
+//@Entity
+//@Table(name = "numbers")
+//public class Numbers {
+//    @Id
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    private Long id;
+//
+//    @Column(nullable = false)
+//    private int userNumber;
+//
+//    @ManyToOne
+//    @JoinColumn(name = "user_id", nullable = false)
+//    private User user;
+//
+//    public Numbers() {
+//    }
+//
+//    public Numbers(int userNumber) {
+//        this.userNumber = userNumber;
+//    }
+//
+//    public Long getId() {
+//        return id;
+//    }
+//
+//    public void setId(Long id) {
+//        this.id = id;
+//    }
+//
+//    public int getUserNumber() {
+//        return userNumber;
+//    }
+//
+//    public void setUserNumber(int userNumber) {
+//        this.userNumber = userNumber;
+//    }
+//
+//    public User getUser() {
+//        return user;
+//    }
+//
+//    public void setUser(User user) {
+//        this.user = user;
+//    }
+//
+//    @Override
+//    public String toString() {
+//        return "Numbers{" +
+//                "id=" + id +
+//                ", userNumber=" + userNumber +
+//                '}';
+//    }
+//}

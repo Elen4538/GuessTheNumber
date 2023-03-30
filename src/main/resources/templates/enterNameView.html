@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<div class = "entername" align="center">
+
+
+    To start the game, please enter your name below ! :)
+
+<!--TODO put validator and 45 symbols-->
+
+<br>
+    <br>
+    <form action="#" th:action="@{/register}" method="post" th:object="${user}" >
+        <label>Your name:</label>
+        <input type="text" th:field="*{userName}" /><br/>
+        <br/>
+
+        <button type="submit">Ok</button>
+    </form>
+
+</div>
+
+</body>
+</html>
+
+
+<!--th:action="@{/register/{ID}(ID=${USER.getId()})}"-->
