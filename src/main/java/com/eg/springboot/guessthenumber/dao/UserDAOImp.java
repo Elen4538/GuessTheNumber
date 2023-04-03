@@ -32,10 +32,11 @@ public class UserDAOImp implements UserDAO {
         user.setComputerNumber(newUser.getComputerNumber());
 
     }
+
     @Override
     public int showComputerNumber(int id) {
         Query query = entityManager.createQuery("select 'computer_number' from User where id=:userID");
-        query.setParameter("userID",id);
+        query.setParameter("userID", id);
         int computerNumber = query.getFirstResult();
         return computerNumber;
     }
@@ -43,14 +44,15 @@ public class UserDAOImp implements UserDAO {
     @Override
     public void saveComputerNumber(int id, int number) {
         Query query = entityManager.createQuery("update User set computerNumber=Number where id=:userID");
-        query.setParameter("userID",id);
-        query.setParameter("Number",number);
+        query.setParameter("userID", id);
+        query.setParameter("Number", number);
         query.executeUpdate();
 
     }
+
     @Override
     public void addNewUser(User user) {
-        entityManager.persist(user);
+        entityManager.persist(user); //persist
 
 
     }

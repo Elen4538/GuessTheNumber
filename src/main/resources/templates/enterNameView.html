@@ -2,32 +2,28 @@
 <html lang="en"  xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <link rel='stylesheet' th:href="@{./css/style.css}"/>
+    <title>GuessNumber : Blond edition : 2023</title>
 </head>
 <body>
 
 
-<div class = "entername" align="center">
+<div class="empty">&nbsp;</div>
 
-
-    To start the game, please enter your name below ! :)
-
-<!--TODO put validator and 45 symbols-->
-
-<br>
-    <br>
-    <form action="#" th:action="@{/register}" method="post" th:object="${user}" >
-        <label>Your name:</label>
-        <input type="text" th:field="*{userName}" /><br/>
-        <br/>
-
-        <button type="submit">Ok</button>
-    </form>
-
+<div class="enternameview_top">
+    <div class="enternameview_top_text">
+        To start the game, please enter your name below !
+        <h1>☺</h1>
+        <!--TODO put validator-->
+        <form action="#" th:action="@{/register}" method="post" th:object="${user}" >
+            <label>&nbsp;&nbsp;&nbsp;</label>
+            Your name:
+            <input type="text" th:field="*{userName}" /><br/>
+            <br/>
+            <button type="submit">OK</button>
+        </form>
+    </div>
 </div>
 
 </body>
 </html>
-
-
-<!--th:action="@{/register/{ID}(ID=${USER.getId()})}"-->

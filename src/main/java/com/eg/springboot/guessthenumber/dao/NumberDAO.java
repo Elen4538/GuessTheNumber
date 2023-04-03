@@ -10,6 +10,7 @@ import java.util.List;
 public interface NumberDAO {
 
     public void addGuessNumber(Numbers number);
+
     public List<Numbers> showPreviousNumber(int id);
 
 }

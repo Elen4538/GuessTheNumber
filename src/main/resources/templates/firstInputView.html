@@ -1,18 +1,28 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" >
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <link rel='stylesheet' th:href="@{./css/style.css}"/>
+    <title>GuessNumber : Blond edition : 2023 - first input</title>
 </head>
 <body>
 
-Enter your number :D
-<form action="#" th:action="@{/enterTheNumber}" method="post" th:object="${EnterNumber}">
-    <label>Number</label>
-    <input type="text"     th:field="*{userNumber}" />
-    <br/>
-    <button type="submit">Ok</button>
-</form>
+<div class="empty">&nbsp;</div>
+
+
+<div class="enternameview_top">
+    <div class="enternameview_top_text">
+        Enter your number:<br>
+        <form action="#" th:action="@{/enterTheNumber}" method="post" th:object="${EnterNumber}">
+            <label>&nbsp;</label>
+            <br>
+            <input type="text"     th:field="*{userNumber}" />
+            <br><br>
+            <button type="submit">Ok</button>
+        </form>
+
+    </div>
+</div>
 
 </body>
 </html>

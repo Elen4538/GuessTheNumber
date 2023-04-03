@@ -9,5 +9,6 @@ import java.util.List;
  */
 public interface NumberService {
     public void addGuessNumber(Numbers number);
+
     public List<Numbers> showPreviousNumber(int id);
 }

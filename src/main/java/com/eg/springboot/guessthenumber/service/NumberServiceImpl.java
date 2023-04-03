@@ -12,10 +12,11 @@ import java.util.List;
  * @author elena
  */
 @Service
-public class NumberServiceImpl implements NumberService{
+public class NumberServiceImpl implements NumberService {
 
     @Autowired
     private NumberDAO numberDAO;
+
     @Override
     @Transactional
     public void addGuessNumber(Numbers number) {
