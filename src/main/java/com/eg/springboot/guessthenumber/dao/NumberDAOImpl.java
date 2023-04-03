@@ -12,10 +12,11 @@ import java.util.List;
  * @author elena
  */
 @Repository
-public class NumberDAOImpl implements NumberDAO{
+public class NumberDAOImpl implements NumberDAO {
 
     @PersistenceContext
     private EntityManager entityManager;
+
     @Override
     public void addGuessNumber(Numbers number) {
         entityManager.persist(number);
@@ -25,7 +26,7 @@ public class NumberDAOImpl implements NumberDAO{
     public List<Numbers> showPreviousNumber(int id) {
         // create query get list
         Query query = entityManager.createQuery("select userNumber from Numbers where userId =:userId");
-        List<Numbers> enteredNumbers = query.setParameter("userId",id).getResultList();
+        List<Numbers> enteredNumbers = query.setParameter("userId", id).getResultList();
         return enteredNumbers;
     }
 }

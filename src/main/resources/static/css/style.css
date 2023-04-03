@@ -1,0 +1,51 @@
+body{
+    background: #343d46;
+    background-image: url("../images/bg1.jpg");
+    background-repeat: no-repeat, no-repeat;
+    background-position: center;
+}
+
+
+.empty{
+    border: 0px;
+
+    height: 25px;
+
+}
+
+.enternameview_top {
+    width: 500px;
+    border: 1px solid #fff;
+    font-size: 18px;
+    color: #fff;
+    background-color: #DD88A8;
+    text-align: center;
+    margin: auto;
+}
+
+.enternameview_top_text {
+
+    border: 0px;
+    font-size: 22px;
+    color: #fff;
+    background-color: #DD88A8;
+    text-align: center;
+    margin: 30px 20px 30px 30px;
+}
+
+input {
+
+    border: 0;
+    font-size: 27px;
+    color: #fff;
+    background-color: #aaa;
+}
+
+button {
+
+    border: 1;
+    font-size: 27px;
+    color: #fff;
+    background-color: #aaa;
+    border: 1px solid #fff;
+}

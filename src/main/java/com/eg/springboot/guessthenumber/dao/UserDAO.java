@@ -11,8 +11,10 @@ import java.util.List;
 public interface UserDAO {
 
     public void saveUserName(User user);
+
     public int showComputerNumber(int id);
-    public void saveComputerNumber(int id,int computerNumber);
+
+    public void saveComputerNumber(int id, int computerNumber);
 
     public void addNewUser(User user);
 

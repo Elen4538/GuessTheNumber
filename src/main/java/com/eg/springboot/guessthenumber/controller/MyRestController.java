@@ -16,8 +16,6 @@ import java.util.Random;
  * @author elena
  */
 
-
-
 //TODO This application has no explicit mapping for /error, so you are seeing this as a fallback.
 
 @Controller
@@ -29,43 +27,34 @@ public class MyRestController {
     private UserService userService;
     @Autowired
     private NumberService numberService;
-    @ModelAttribute("user")
-    public User createUser() {
-        return new User();
-    }
-
 
     int counter = 9;
 
-//    @GetMapping("/register")
-//    public String showForm(@ModelAttribute("User") User user) {
-//        //User user = new User()
-//        user.setUserName();
-//        System.out.println("get method");
-//        return "namePage";
-//    }
-
     @GetMapping("/register")
-    public String showForm() {
-//        User user = new User();
-//        model.addAttribute("user", user); /// USER
+    public String showForm(Model model) {
+        User user = new User();
+        model.addAttribute("user", user);
         System.out.println("get method");
         return "enterNameView";
     }
 
-
     @PostMapping("/register")
-    public String submitForm(@ModelAttribute("user") User user
-                             ) {
+    public String submitForm(@ModelAttribute("user") User user) {
+
+        System.out.println("POSTMAPPING REGISTER  -----------user HERE WE GOT NAME FROM THE INPUT :" + user);
+
         Random randomNumber = new Random();
         int guessNumber = 0;
-        while (counter > 0){
+        while (counter > 0) {
             guessNumber = randomNumber.nextInt(101);
-            if(guessNumber !=0) break;
+            if (guessNumber != 0) break;
             counter--;
         }
+
         user.setComputerNumber(guessNumber);
+        System.out.println("USERDATA TO INSERT");
         System.out.println(user);
+
         userService.addNewUser(user);
 
         System.out.println("new user added");
@@ -75,6 +64,7 @@ public class MyRestController {
 
         return "redirect:enterTheNumber";
     }
+
     @GetMapping("/enterTheNumber")
     public String numberForm(Model model1) {
         System.out.println("this is enterTheNumber GET");
@@ -82,18 +72,19 @@ public class MyRestController {
         model1.addAttribute("EnterNumber", num);
         return "firstInputView";
     }
+
     @PostMapping("/enterTheNumber")
     public String letsGuess(Model model,
-            @ModelAttribute("EnterNumber") Numbers num,
-            @ModelAttribute("user") User user
-                            ) {
+                            Model model1,
+                            @ModelAttribute("EnterNumber") Numbers num,
+                            @ModelAttribute("user") User user
+    ) {
         System.out.println("this is enterTheNumber POST");
         System.out.println("USER  ---" + user);
         System.out.println("----JUST CHECK ---");
 
         System.out.println("NUMBER   ---" + num);
 
-        //int counter = 9;
         num.setUserId(user.getId());
         System.out.println("COUNTER-------" + counter);
 
@@ -106,16 +97,22 @@ public class MyRestController {
                 //return "redirect:enterTheNumber";
 
                 int idUSER = user.getId();
-                System.out.println("iduser------------------------"+idUSER);
+                System.out.println("iduser------------------------" + idUSER);
 
                 List<Numbers> enteredNumbers = numberService.showPreviousNumber(idUSER);
-                model.addAttribute("enteredNumbers",enteredNumbers);
+
+//                int sizeList = enteredNumbers.size()-1;
+//                Numbers lastEnteredNumber = enteredNumbers.get(sizeList);
+//                model1.addAttribute("LastEnteredNumber",lastEnteredNumber);
+
+                model.addAttribute("enteredNumbers", enteredNumbers);
                 System.out.println("ENTERED NUMBERS" + enteredNumbers);
                 return "secondInput";
 
             } else {
 
                 numberService.addGuessNumber(num);
+                System.out.println("YOU WIN");
 
                 return "youWinView";
             }
@@ -124,14 +121,4 @@ public class MyRestController {
         return "youFailedView";
 
     }
-
 }
-
-//    User{id=0, userName='Egor', computerNumber=80, numbers=null}
-//new user added
-//        this is enterTheNumber GET
-//        ENTER NUMBER: Numbers{id=0, userId=0, userNumber=0}
-//        this is enterTheNumber POST
-//        USER: User{id=0, userName='null', computerNumber=0, numbers=null}
-//        here we add attempts to DB
-//        ENTER NUMBER: Numbers{id=0, userId=0, userNumber=5}
