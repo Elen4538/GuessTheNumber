@@ -1,4 +1,13 @@
 # GuessTheNumber
-A game where user tries to guess the number which cumputer is thinking of.
+A Web App Game where user has to guess a random generated number in a certain range [0,100] in less than eight tries.
+Obviously its simple.
 
-Stack: Spring Boot,Thymeleaf, Hibernate, MySQL
+Stack: 
+- Java 17
+- Spring Boot
+- Hibernate
+- MySQL
+- Thymeleaf
+- Maven
+
+
