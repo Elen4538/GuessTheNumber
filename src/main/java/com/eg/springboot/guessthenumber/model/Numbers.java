@@ -1,6 +1,7 @@
 package com.eg.springboot.guessthenumber.model;
 
 import jakarta.persistence.*;
+import org.hibernate.validator.constraints.Range;
 
 /**
  * @author elena
@@ -19,6 +20,7 @@ public class Numbers {
     private int userId;
 
     @Column(name = "user_number")
+    @Range(min=1, max = 100, message = "must be from 1 to 100")
     private int userNumber;
 
     public Numbers() {

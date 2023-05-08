@@ -24,7 +24,7 @@ public class NumberDAOImpl implements NumberDAO {
 
     @Override
     public List<Numbers> showPreviousNumber(int id) {
-        // create query get list
+
         Query query = entityManager.createQuery("select userNumber from Numbers where userId =:userId");
         List<Numbers> enteredNumbers = query.setParameter("userId", id).getResultList();
         return enteredNumbers;

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:form="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
     <link rel='stylesheet' th:href="@{./css/style.css}"/>
@@ -15,13 +15,18 @@
         To start the game, please enter your name below !
         <h1>☺</h1>
         <!--TODO put validator-->
-        <form action="#" th:action="@{/register}" method="post" th:object="${user}" >
+        <form action="#" th:action="@{/register}" method="post" th:object="${user}">
             <label>&nbsp;&nbsp;&nbsp;</label>
             Your name:
-            <input type="text" th:field="*{userName}" /><br/>
+            <input type="text" th:field="*{userName}"/> <br/>
+            <!--       TODO     erorrs do not display but it works-->
+            <div th:errors="*{userName}" class="error"/>
+
             <br/>
             <button type="submit">OK</button>
         </form>
+
+
     </div>
 </div>
 

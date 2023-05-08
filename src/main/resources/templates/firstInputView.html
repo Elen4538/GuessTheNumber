@@ -1,11 +1,28 @@
 <!DOCTYPE html>
-<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <link rel='stylesheet' th:href="@{./css/style.css}"/>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <title>GuessNumber : Blond edition : 2023 - first input</title>
+
+    <link rel='stylesheet' th:href="@{./css/style.css}"/>
+
+
 </head>
+
+
+<style>
+    .error {
+        color: #ff0000;
+        font-style: italic;
+        font-weight: bold;
+    }
+</style>
+
+
 <body>
+<script type="text/javascript" th:src="@{./js/numberInputCheck.js}"></script>
 
 <div class="empty">&nbsp;</div>
 
@@ -16,7 +33,13 @@
         <form action="#" th:action="@{/enterTheNumber}" method="post" th:object="${EnterNumber}">
             <label>&nbsp;</label>
             <br>
-            <input type="text"     th:field="*{userNumber}" />
+            <input class="input-range" type="text" data-min="1" data-max="100" th:field="*{userNumber}"
+                   placeholder="your guess number"/>
+
+            <!--TODO make red error visible in the field-->
+            <ul>
+                <li th:each="err : ${#fields.errors('userNumber')}" th:text="${err}" class="error"/>
+            </ul>
             <br><br>
             <button type="submit">Ok</button>
         </form>

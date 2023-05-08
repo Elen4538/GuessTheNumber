@@ -1,12 +1,13 @@
 <!DOCTYPE html>
-<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <link rel='stylesheet' th:href="@{./css/style.css}"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <title>GuessNumber : Blond edition : 2023 _.... game</title>
 </head>
 <body>
-
+<script type="text/javascript" th:src="@{./js/numberInputCheck.js}"></script>
 
 <div class="empty">&nbsp;</div>
 
@@ -26,17 +27,6 @@
         </table>
         <br>
 
-
-
-
-        <!--<td>-->
-        <!--    <span th:if="${LastEnteredNumber.getUserNumber() > user.getComputerNumber()}">Previous entered number is greater than target!</span>-->
-        <!--    <span th:unless="${LastEnteredNumber.getUserNumber() < user.getComputerNumber()}">Previous entered number is less than target!</span>-->
-        <!--</td>-->
-
-
-
-
         <br>
 
         Try one more time!
@@ -44,11 +34,21 @@
         <form action="#" th:action="@{/enterTheNumber}" method="post" th:object="${EnterNumber}">
             <br><label>Enter Number:</label>
 
-            <input type="text"     th:field="*{userNumber}"   />
+            <input class="input-range" type="text" data-min="1" data-max="100" th:field="*{userNumber}"
+                   placeholder="your guess number"/>
+
+            <br/>
+            <td th:text="${hint}"></td>
+
+
+            <ul>
+                <li th:each="err : ${#fields.errors('userNumber')}" th:text="${err}" class="error"/>
+            </ul>
+
+
             <br><br>
             <button type="submit">Ok</button>
         </form>
-
 
 
     </div>

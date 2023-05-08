@@ -1,17 +1,11 @@
 package com.eg.springboot.guessthenumber.dao;
 
-import com.eg.springboot.guessthenumber.model.Numbers;
 import com.eg.springboot.guessthenumber.model.User;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.Query;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
 
 /**
  * @author elena
@@ -52,7 +46,7 @@ public class UserDAOImp implements UserDAO {
 
     @Override
     public void addNewUser(User user) {
-        entityManager.persist(user); //persist
+        entityManager.persist(user);
 
 
     }

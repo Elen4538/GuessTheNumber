@@ -1,16 +1,16 @@
 package com.eg.springboot.guessthenumber.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
  * @author elena
  */
 
-
-//add relationships
+//TODO CORRECT relations
 @Entity
 @Table(name = "user_info")
 public class User {
@@ -18,8 +18,12 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private int id;
+
     @Column(name = "name")
+    @NotBlank(message = "User's name cannot be blank")
+    @Size(min = 2, max = 30, message = "Name must be min 2 symbols")
     private String userName;
+
     @Column(name = "computer_number")
     private int computerNumber;
 
@@ -43,9 +47,6 @@ public class User {
         this.id = id;
     }
 
-    // validation
-    //@NotBlank
-    //@Pattern (regexp = "\\d{3}-\\d{2}-\\d{2}", message = "please use pattern XXX-XX-XX")
     public String getUserName() {
         return userName;
     }
