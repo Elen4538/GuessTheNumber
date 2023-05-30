@@ -5,7 +5,7 @@ Obviously its simple.
 Stack: 
 - Java 17
 - Spring Boot
-- Hibernate
+- JPA
 - MySQL
 - Thymeleaf
 - Maven
